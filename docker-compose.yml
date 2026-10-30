@@ -12,9 +12,9 @@ services:
       DATABASE_USERNAME: shopops
       DATABASE_PASSWORD: ${DATABASE_PASSWORD:?set DATABASE_PASSWORD}
       SHOP_API_KEY: ${SHOP_API_KEY:?set SHOP_API_KEY}
-      SHOP_AI_ENABLED: "true"
-      SPRING_AI_CHAT_MODEL: openai
-      OPENAI_API_KEY: ${OPENAI_API_KEY:?set OPENAI_API_KEY}
+      SHOP_AI_ENABLED: ${SHOP_AI_ENABLED:-false}
+      SPRING_AI_CHAT_MODEL: ${SPRING_AI_CHAT_MODEL:-none}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-disabled}
     depends_on: {postgres: {condition: service_healthy}}
     read_only: true
     tmpfs: ["/tmp"]

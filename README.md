@@ -8,6 +8,8 @@ An original, production-oriented e-commerce backend built with Spring Boot and S
 
 [Open the full-resolution screenshot](docs/media/product-console.jpg) · **Recruiter demo:** query the live catalogue through grounded tools, explain why the model cannot order, then reserve inventory through the explicit transactional endpoint.
 
+[▶ Watch the recorded catalogue and reservation demo (5 seconds)](docs/media/runtime-demo.mp4)
+
 > **Deployment status:** tested, containerized and ready for an AWS deployment with managed PostgreSQL and secrets; OpenAI execution requires operator-supplied credentials and no public production endpoint is claimed yet.
 
 ## Production design
