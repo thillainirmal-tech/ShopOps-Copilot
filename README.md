@@ -27,4 +27,4 @@ docker compose up --build
 mvn verify
 ```
 
-This project applies course concepts such as tool calling and safe AI integration, but its product model, approval boundary, inventory transaction design, APIs and operational packaging are original.
+The product model, grounded tool architecture, approval boundary, inventory transaction design, APIs and operational packaging are original.
