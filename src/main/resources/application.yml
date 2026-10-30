@@ -1,0 +1,19 @@
+spring:
+  application.name: shopops-copilot
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/shopops}
+    username: ${DATABASE_USERNAME:shopops}
+    password: ${DATABASE_PASSWORD:shopops}
+  jpa:
+    open-in-view: false
+    hibernate.ddl-auto: validate
+  ai:
+    model.chat: ${SPRING_AI_CHAT_MODEL:none}
+    openai:
+      api-key: ${OPENAI_API_KEY:disabled}
+      chat.options.model: ${OPENAI_MODEL:gpt-5-mini}
+management.endpoints.web.exposure.include: health,info,prometheus
+management.endpoint.health.probes.enabled: true
+shop:
+  ai.enabled: ${SHOP_AI_ENABLED:false}
+  security.api-key: ${SHOP_API_KEY:change-me-before-production}

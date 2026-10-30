@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:17.6-alpine
+    environment: {POSTGRES_DB: shopops, POSTGRES_USER: shopops, POSTGRES_PASSWORD: "${DATABASE_PASSWORD:?set DATABASE_PASSWORD}"}
+    volumes: ["shopops-data:/var/lib/postgresql/data"]
+    healthcheck: {test: ["CMD-SHELL", "pg_isready -U shopops"], interval: 5s, timeout: 3s, retries: 10}
+  api:
+    build: .
+    ports: ["8080:8080"]
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/shopops
+      DATABASE_USERNAME: shopops
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:?set DATABASE_PASSWORD}
+      SHOP_API_KEY: ${SHOP_API_KEY:?set SHOP_API_KEY}
+      SHOP_AI_ENABLED: "true"
+      SPRING_AI_CHAT_MODEL: openai
+      OPENAI_API_KEY: ${OPENAI_API_KEY:?set OPENAI_API_KEY}
+    depends_on: {postgres: {condition: service_healthy}}
+    read_only: true
+    tmpfs: ["/tmp"]
+    security_opt: ["no-new-privileges:true"]
+volumes: {shopops-data: {}}
