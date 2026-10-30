@@ -2,7 +2,7 @@
 
 An original, production-oriented e-commerce backend built with Spring Boot and Spring AI. It combines a transactional catalog/order core with a grounded shopping copilot that must query live product tools before making price or availability claims.
 
-## Why this is more than a chatbot demo
+## Production design
 
 - Optimistic locking prevents silent inventory races; order totals are calculated server-side.
 - The model can search and inspect products but **cannot place orders**. A separate validated endpoint creates a reservation only after explicit user action.
